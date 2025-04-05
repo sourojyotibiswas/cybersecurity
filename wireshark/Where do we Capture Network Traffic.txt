@@ -1,0 +1,31 @@
+              🌐 INTERNET (External Traffic)
+                      │
+                      ▼
+            ┌──────────────────┐
+            │   FIREWALL       │  <-- (Traffic filtering & logging)
+            └──────────────────┘
+                      │
+                      ▼
+            ┌──────────────────┐
+            │  ROUTER / SWITCH │  <-- (SPAN Port / Port Mirroring)
+            └──────────────────┘
+                       │
+   ┌────────────────┴────────────────┐
+   │                                       │
+   ▼                                       ▼
+┌──────────────┐                     ┌──────────────┐
+│ NETWORK TAP  │ <-- (Passive capture)  |   Wi-Fi Access  │ <-- (Wireless Sniffing)
+└──────────────┘                     └──────────────┘
+   │                                         │
+   ▼                                         ▼
+┌──────────────┐                   ┌─────────────────┐
+│  ENDPOINTS      │ <-- (Wireshark,   │   ATTACKER         │ <-- (Monitor Mode, MITM)
+│ (PCs, Laptops   │  tcpdump, Scapy)  │  (Wireshark,       │
+│ VMs, Servers)   │                   │  Airodump-ng)      │
+└──────────────┘                    └─────────────────┘
+   │                                           │
+   ▼                                           ▼
+┌──────────────┐                        ┌─────────────────┐
+│  LOCAL LOGS     │ <-- (Security logs     │  CLOUD SERVER      │ <-- (AWS VPC Flow Logs, 
+│ (IDS/IPS, SIEM│ |    & packet analysis)  │                    |    GCP Packet Mirroring)
+└──────────────┘                        └─────────────────┘
